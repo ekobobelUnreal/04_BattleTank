@@ -1,19 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BattleTank.h"
+#include "TankAimingComponent.h"
 #include "Tank.h"
 
-
-void ATank::SetBarrelReference(UStaticMeshComponent * BarrelToSet)
-{
-	TankAimingComponent->SetBarrelReference(BarrelToSet);
-}
-
-// Sets default values
+// Sets default values (CONSTRUCTOR)
 ATank::ATank()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
 	// No need to protect points as added at construction
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
@@ -23,24 +18,35 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void ATank::Tick( float DeltaTime )
-{
-	Super::Tick( DeltaTime );
-
 }
 
 // Called to bind functionality to input
 void ATank::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 {
 	Super::SetupPlayerInputComponent(InputComponent);
-
 }
 
+// this is called by AI or Player Controller
 void ATank::AimAt(FVector HitLocation)
 {
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
+
+// this is called automatically on BeginPlay in Tank_BP
+void ATank::SetBarrelReference(UTankBarrel * BarrelToSet)
+{
+	TankAimingComponent->SetBarrelReference(BarrelToSet);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
