@@ -9,7 +9,8 @@
 class UTankBarrel;
 class UTankTurret;
 class UTankAimingComponent;
-class UTankMovementComponent;
+// TODO REMOVE THIS CODE IF IT HAS NO PURPOSE
+//class UTankMovementComponent;
 class AProjectile;
 
 UCLASS()
@@ -32,8 +33,9 @@ public:
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 	
-	UPROPERTY(BlueprintReadOnly)
-	UTankMovementComponent* TankMovementComponent = nullptr;
+	// TODO REMOVE THIS CODE IF IT HAS NO PURPOSE
+	//UPROPERTY(BlueprintReadOnly)
+	//UTankMovementComponent* TankMovementComponent = nullptr;
 
 private:
 	// Sets default values for this pawn's properties
